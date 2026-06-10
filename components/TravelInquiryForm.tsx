@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
-import { useReducer, useState } from "react";
+import { ChangeEvent, useReducer, useState } from "react";
 import {
   Combobox,
   ComboboxContent,
@@ -18,37 +18,53 @@ import {
   ComboboxItem,
   ComboboxList,
 } from "./ui/combobox";
+import { FormAction, FormState } from "@/type";
 
-const initialState = "";
+const initialFormState: FormState = {
+  name: "",
+  email: "",
+  phone: "",
+  places: "",
+  message: "",
+};
 
-function reducer(state, action) {
+function reducer(state: FormState, action: FormAction) {
   switch (action.type) {
-    case "SET_FIELD": {
-      const newState = [
+    case "SET_FIELD":
+      return {
         ...state,
-        {
-          name: action.payload,
-          email: action.payload,
-          phone: action.payload,
-          places: action.payload,
-          message: action.payload,
-        },
-      ];
-      return newState;
-    }
+        [action.payload.field]: action.payload.value,
+      };
 
-    case "RESET": {
-    }
+    case "RESET_FORM":
+      return initialFormState;
     default:
-      throw new Error();
+      return state;
   }
 }
 
 const places = ["Bishkek", "Naryn", "Issyk Kul"];
 
-export function TravelInquiryForm() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+export const TravelInquiryForm = () => {
+  const [state, dispatch] = useReducer(reducer, initialFormState);
   const [loading, setLoading] = useState(false);
+
+  const handleValueChange = (field: keyof FormState, value: string) => {
+    dispatch({
+      type: "SET_FIELD",
+      payload: {
+        field,
+        value,
+      },
+    });
+  };
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    handleValueChange(e.target.id as keyof FormState, e.target.value);
+  };
+
   return (
     <div>
       <form
@@ -58,12 +74,16 @@ export function TravelInquiryForm() {
           event.preventDefault();
           const response = await fetch("/api/contact-request/", {
             method: "POST",
-            body: JSON.stringify({}),
+            body: JSON.stringify(state),
           });
-          const data = await response.json();
 
           if (response.ok) {
+            dispatch({
+              type: "RESET_FORM",
+            });
           } else {
+            const data = await response.json();
+            alert(data.message);
           }
 
           setLoading(false);
@@ -72,37 +92,49 @@ export function TravelInquiryForm() {
         <FieldGroup>
           <div className="grid grid-cols-2 gap-4">
             <Field>
-              <FieldLabel htmlFor="form-name">Your Name</FieldLabel>
+              <FieldLabel htmlFor="name">Your Name</FieldLabel>
               <Input
-                id="form-name"
+                id="name"
                 type="text"
                 placeholder="Enter your full name"
                 required
+                value={state.name}
+                onChange={handleChange}
               />
             </Field>
             <Field>
-              <FieldLabel htmlFor="form-email">Email</FieldLabel>
+              <FieldLabel htmlFor="email">Email</FieldLabel>
               <Input
-                id="form-email"
+                id="email"
                 type="email"
                 placeholder="john@example.com"
+                value={state.email}
+                onChange={handleChange}
               />
             </Field>
           </div>
           <Field>
-            <FieldLabel htmlFor="form-phone">Phone / WhatsApp</FieldLabel>
+            <FieldLabel htmlFor="phone">Phone / WhatsApp</FieldLabel>
             <Input
-              id="form-phone"
+              id="phone"
               type="tel"
               placeholder="Enter your phone number"
+              value={state.phone}
+              onChange={handleChange}
             />
           </Field>
           <Field>
-            <FieldLabel htmlFor="form-country">
+            <FieldLabel htmlFor="places">
               Places you are interested in
             </FieldLabel>
-            <Combobox items={places}>
-              <ComboboxInput placeholder="Select or type places" />
+            <Combobox
+              items={places}
+              value={state.places}
+              onValueChange={(value) => {
+                handleValueChange("places", value ?? "");
+              }}
+            >
+              <ComboboxInput id="places" placeholder="Select or type places" />
               <ComboboxContent>
                 <ComboboxEmpty>No items found.</ComboboxEmpty>
                 <ComboboxList>
@@ -118,13 +150,13 @@ export function TravelInquiryForm() {
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="checkout-7j9-optional-comments">
-              Tell me about your trip
-            </FieldLabel>
+            <FieldLabel htmlFor="message">Tell me about your trip</FieldLabel>
             <Textarea
-              id="checkout-7j9-optional-comments"
+              id="message"
               placeholder="What are you looking for? Any special requests?"
               className="resize-none"
+              value={state.message}
+              onChange={handleChange}
             />
           </Field>
           <Field orientation="horizontal">

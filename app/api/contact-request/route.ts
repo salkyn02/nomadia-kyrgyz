@@ -6,10 +6,11 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const requiredFields = ["name", "email", "phone", "message"];
+    const requiredFields = ["Name", "Email", "Phone", "Message"];
 
     for (const field of requiredFields) {
-      if (!body[field]?.trim()) {
+      const lowerField = field.toLowerCase();
+      if (!body[lowerField]?.trim()) {
         return NextResponse.json(
           { message: `${field} is required` },
           { status: 400 },
