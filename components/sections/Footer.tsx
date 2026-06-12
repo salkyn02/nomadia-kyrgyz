@@ -5,7 +5,10 @@ import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <footer className="relative text-white overflow-hidden">
+    <footer
+      id="contact"
+      className="relative text-white overflow-hidden scroll-mt-24"
+    >
       {/* Background Image */}
       <Image
         src="/hero.jpg"

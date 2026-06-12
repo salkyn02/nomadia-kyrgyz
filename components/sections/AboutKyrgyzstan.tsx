@@ -3,7 +3,7 @@ import { Mountain, Landmark, Trees, Compass } from "lucide-react";
 
 export const AboutKyrgyzstan = () => {
   return (
-    <section className="py-20">
+    <section id="about" className="py-20 scroll-mt-24">
       <Container>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>

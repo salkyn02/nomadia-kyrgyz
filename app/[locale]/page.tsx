@@ -7,7 +7,7 @@ import { TopDestinations } from "@/components/sections/TopDestinations";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full">
       <Header />
       <Hero />
       <AboutKyrgyzstan />

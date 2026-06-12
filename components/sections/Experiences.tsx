@@ -53,11 +53,11 @@ export const Experiences = () => {
   };
 
   return (
-    <section className="w-full py-16">
+    <section id="experience" className="w-full py-16 scroll-mt-24">
       <Container>
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide whitespace-nowrap">
             TOP EXPERIENCES
           </h2>
 

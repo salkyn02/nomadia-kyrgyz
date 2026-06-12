@@ -53,11 +53,11 @@ export const TopDestinations = () => {
   };
 
   return (
-    <section className="w-full py-16">
-      <Container>
+    <section id="destinations" className="w-full py-16 scroll-mt-24">
+      <Container className="w-full">
         {/* Header */}
-        <div className="max-w-6xl mx-auto px-4 flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide">
+        <div className="max-w-6xl w-full mx-auto flex items-center justify-between mb-8">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide whitespace-nowrap">
             TOP DESTINATIONS
           </h2>
 
