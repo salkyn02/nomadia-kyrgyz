@@ -42,16 +42,17 @@ export const Header = () => {
             </Link>
             <Link
               className="hover:underline underline-offset-4"
-              href="#experience"
-            >
-              {t("experiences")}
-            </Link>
-            <Link
-              className="hover:underline underline-offset-4"
               href="#destinations"
             >
               {t("destinations")}
             </Link>
+            <Link
+              className="hover:underline underline-offset-4"
+              href="#experience"
+            >
+              {t("experiences")}
+            </Link>
+
             <Link
               className="hover:underline underline-offset-4"
               href="#contact"
