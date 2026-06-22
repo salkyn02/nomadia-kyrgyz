@@ -43,7 +43,11 @@ function reducer(state: FormState, action: FormAction) {
   }
 }
 
-const places = ["Bishkek", "Naryn", "Issyk Kul"];
+const places = [
+  { value: "Bishkek", label: "Bishkek" },
+  { value: "Naryn", label: "Naryn" },
+  { value: "Issyk Kul", label: "Issyk Kul" },
+];
 
 export const TravelInquiryForm = () => {
   const [state, dispatch] = useReducer(reducer, initialFormState);
@@ -132,7 +136,7 @@ export const TravelInquiryForm = () => {
               items={places}
               value={state.places}
               onValueChange={(value) => {
-                console.log('Value', value)
+                console.log("Value", value);
                 handleValueChange("places", value ?? "");
               }}
             >
@@ -141,8 +145,8 @@ export const TravelInquiryForm = () => {
                 <ComboboxEmpty>No items found.</ComboboxEmpty>
                 <ComboboxList>
                   {(item) => (
-                    <ComboboxItem key={item} value={item}>
-                      {item}
+                    <ComboboxItem key={item.value} value={item.value}>
+                      {item.label}
                     </ComboboxItem>
                   )}
                 </ComboboxList>
