@@ -26,7 +26,7 @@ export default async function LocaleLayout({
 
   const messages = await getMessages({ locale });
 
-  const className = cn("min-h-full w-screen flex flex-col", geist.variable);
+  const className = cn("min-h-full w-screen flex flex-col", geist.className);
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
