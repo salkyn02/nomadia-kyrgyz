@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
-import { ChangeEvent, useReducer, useState } from "react";
+import { ChangeEvent, useEffect, useReducer, useRef, useState } from "react";
 import {
   Combobox,
   ComboboxContent,
@@ -47,8 +47,18 @@ const places = ["Bishkek", "Naryn", "Issyk Kul"];
 
 export const TravelInquiryForm = () => {
   const [state, dispatch] = useReducer(reducer, initialFormState);
-  console.log("State places", state.places);
   const [loading, setLoading] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(
+    null,
+  );
+
+  useEffect(() => {
+    setPortalContainer(
+      formRef.current?.closest<HTMLElement>("[data-slot=dialog-content]") ??
+        null,
+    );
+  }, []);
 
   const handleValueChange = (field: keyof FormState, value: string) => {
     dispatch({
@@ -67,7 +77,7 @@ export const TravelInquiryForm = () => {
   };
 
   return (
-    <div>
+    <div ref={formRef}>
       <form
         className="w-full max-w-sm"
         onSubmit={async (event) => {
@@ -130,14 +140,13 @@ export const TravelInquiryForm = () => {
             </FieldLabel>
             <Combobox
               items={places}
-              value={state.places}
+              value={state.places || null}
               onValueChange={(value) => {
-                console.log('Value', value)
                 handleValueChange("places", value ?? "");
               }}
             >
               <ComboboxInput id="places" placeholder="Select or type places" />
-              <ComboboxContent>
+              <ComboboxContent container={portalContainer}>
                 <ComboboxEmpty>No items found.</ComboboxEmpty>
                 <ComboboxList>
                   {(item) => (

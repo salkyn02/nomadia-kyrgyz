@@ -7,6 +7,7 @@ import { MountainSnow } from "lucide-react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -70,6 +71,9 @@ export const Header = () => {
               <DialogContent className="max-w-4xl">
                 <DialogHeader className="sr-only">
                   <DialogTitle>Plan your trip</DialogTitle>
+                  <DialogDescription>
+                    Send an inquiry with your travel details and interests.
+                  </DialogDescription>
                 </DialogHeader>
                 <TravelInquiryForm />
               </DialogContent>
