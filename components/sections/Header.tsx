@@ -63,7 +63,7 @@ export const Header = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Dialog>
+            <Dialog modal={false}>
               <DialogTrigger asChild>
                 <Button className="cursor-pointer">Plan Your Trip</Button>
               </DialogTrigger>
