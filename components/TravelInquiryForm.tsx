@@ -9,14 +9,18 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
-import { ChangeEvent, useEffect, useReducer, useRef, useState } from "react";
+import { ChangeEvent, Fragment, useReducer, useState } from "react";
 import {
   Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
   ComboboxContent,
   ComboboxEmpty,
-  ComboboxInput,
   ComboboxItem,
   ComboboxList,
+  ComboboxValue,
+  useComboboxAnchor,
 } from "./ui/combobox";
 import { FormAction, FormState } from "@/type";
 
@@ -24,7 +28,7 @@ const initialFormState: FormState = {
   name: "",
   email: "",
   phone: "",
-  places: "",
+  places: [],
   message: "",
 };
 
@@ -43,24 +47,14 @@ function reducer(state: FormState, action: FormAction) {
   }
 }
 
-const places = ["Bishkek", "Naryn", "Issyk Kul"];
+const placeOptions = ["Bishkek", "Naryn", "Issyk Kul"];
 
 export const TravelInquiryForm = () => {
   const [state, dispatch] = useReducer(reducer, initialFormState);
   const [loading, setLoading] = useState(false);
-  const formRef = useRef<HTMLDivElement>(null);
-  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(
-    null,
-  );
+  const placesAnchor = useComboboxAnchor();
 
-  useEffect(() => {
-    setPortalContainer(
-      formRef.current?.closest<HTMLElement>("[data-slot=dialog-content]") ??
-        null,
-    );
-  }, []);
-
-  const handleValueChange = (field: keyof FormState, value: string) => {
+  const handleValueChange = (field: keyof FormState, value: string | string[]) => {
     dispatch({
       type: "SET_FIELD",
       payload: {
@@ -77,7 +71,7 @@ export const TravelInquiryForm = () => {
   };
 
   return (
-    <div ref={formRef}>
+    <div>
       <form
         className="w-full max-w-sm"
         onSubmit={async (event) => {
@@ -85,7 +79,10 @@ export const TravelInquiryForm = () => {
           event.preventDefault();
           const response = await fetch("/api/contact-request/", {
             method: "POST",
-            body: JSON.stringify(state),
+            body: JSON.stringify({
+              ...state,
+              places: state.places.join(", "),
+            }),
           });
 
           if (response.ok) {
@@ -139,14 +136,29 @@ export const TravelInquiryForm = () => {
               Places you are interested in
             </FieldLabel>
             <Combobox
-              items={places}
-              value={state.places || null}
+              items={placeOptions}
+              multiple
+              value={state.places}
               onValueChange={(value) => {
-                handleValueChange("places", value ?? "");
+                handleValueChange("places", value)
               }}
             >
-              <ComboboxInput id="places" placeholder="Select or type places" />
-              <ComboboxContent container={portalContainer}>
+              <ComboboxChips ref={placesAnchor} className="w-full">
+                <ComboboxValue>
+                  {(values) => (
+                    <Fragment>
+                      {values.map((place: string) => (
+                        <ComboboxChip key={place}>{place}</ComboboxChip>
+                      ))}
+                      <ComboboxChipsInput
+                        id="places"
+                        placeholder="Select or type places"
+                      />
+                    </Fragment>
+                  )}
+                </ComboboxValue>
+              </ComboboxChips>
+              <ComboboxContent anchor={placesAnchor}>
                 <ComboboxEmpty>No items found.</ComboboxEmpty>
                 <ComboboxList>
                   {(item) => (
