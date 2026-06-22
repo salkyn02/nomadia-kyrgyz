@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
-import { ChangeEvent, Fragment, useReducer, useState } from "react";
+import { ChangeEvent, useReducer, useState } from "react";
 import {
   Combobox,
   ComboboxChip,
@@ -19,8 +19,7 @@ import {
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
-  ComboboxValue,
-  useComboboxAnchor,
+  ComboboxValue
 } from "./ui/combobox";
 import { FormAction, FormState } from "@/type";
 
@@ -28,7 +27,7 @@ const initialFormState: FormState = {
   name: "",
   email: "",
   phone: "",
-  places: [],
+  places: [], // ""
   message: "",
 };
 
@@ -52,7 +51,6 @@ const placeOptions = ["Bishkek", "Naryn", "Issyk Kul"];
 export const TravelInquiryForm = () => {
   const [state, dispatch] = useReducer(reducer, initialFormState);
   const [loading, setLoading] = useState(false);
-  const placesAnchor = useComboboxAnchor();
 
   const handleValueChange = (field: keyof FormState, value: string | string[]) => {
     dispatch({
@@ -143,10 +141,10 @@ export const TravelInquiryForm = () => {
                 handleValueChange("places", value)
               }}
             >
-              <ComboboxChips ref={placesAnchor} className="w-full">
+              <ComboboxChips className="w-full">
                 <ComboboxValue>
                   {(values) => (
-                    <Fragment>
+                    <>
                       {values.map((place: string) => (
                         <ComboboxChip key={place}>{place}</ComboboxChip>
                       ))}
@@ -154,11 +152,11 @@ export const TravelInquiryForm = () => {
                         id="places"
                         placeholder="Select or type places"
                       />
-                    </Fragment>
+                    </>
                   )}
                 </ComboboxValue>
               </ComboboxChips>
-              <ComboboxContent anchor={placesAnchor}>
+              <ComboboxContent>
                 <ComboboxEmpty>No items found.</ComboboxEmpty>
                 <ComboboxList>
                   {(item) => (
