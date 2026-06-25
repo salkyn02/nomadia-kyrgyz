@@ -51,6 +51,7 @@ const placeOptions = ["Bishkek", "Naryn", "Issyk Kul"];
 export const TravelInquiryForm = () => {
   const [state, dispatch] = useReducer(reducer, initialFormState);
   const [loading, setLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleValueChange = (field: keyof FormState, value: string | string[]) => {
     dispatch({
@@ -67,6 +68,46 @@ export const TravelInquiryForm = () => {
   ) => {
     handleValueChange(e.target.id as keyof FormState, e.target.value);
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="mx-auto max-w-xl rounded-3xl border bg-white p-10 text-center shadow-sm">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8 text-green-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+
+        <h2 className="mb-3 text-3xl font-semibold text-green-700">
+          Inquiry Sent Successfully!
+        </h2>
+
+        <p className="mb-6 text-muted-foreground">
+          Thank you for reaching out. I’ve received your inquiry and will get
+          back to you shortly with travel recommendations and ideas for your
+          Kyrgyzstan adventure.
+        </p>
+
+        <div className="rounded-xl bg-green-50 p-4 text-sm text-green-700">
+          ✓ Your message has been received.
+        </div>
+        <Button variant="outline" onClick={() => setIsSubmitted(false)}>
+          Send Another Inquiry
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -87,6 +128,7 @@ export const TravelInquiryForm = () => {
             dispatch({
               type: "RESET_FORM",
             });
+            setIsSubmitted(true);
           } else {
             const data = await response.json();
             alert(data.message);
@@ -138,7 +180,7 @@ export const TravelInquiryForm = () => {
               multiple
               value={state.places}
               onValueChange={(value) => {
-                handleValueChange("places", value)
+                handleValueChange("places", value ?? "");
               }}
             >
               <ComboboxChips className="w-full">
