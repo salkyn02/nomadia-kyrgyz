@@ -19,9 +19,10 @@ import {
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
-  ComboboxValue
+  ComboboxValue,
 } from "./ui/combobox";
 import { FormAction, FormState } from "@/type";
+import { Check, LockKeyhole, MountainSnow } from "lucide-react";
 
 const initialFormState: FormState = {
   name: "",
@@ -53,7 +54,10 @@ export const TravelInquiryForm = () => {
   const [loading, setLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleValueChange = (field: keyof FormState, value: string | string[]) => {
+  const handleValueChange = (
+    field: keyof FormState,
+    value: string | string[],
+  ) => {
     dispatch({
       type: "SET_FIELD",
       payload: {
@@ -72,24 +76,11 @@ export const TravelInquiryForm = () => {
   if (isSubmitted) {
     return (
       <div className="mx-auto max-w-xl rounded-3xl border bg-white p-10 text-center shadow-sm">
-        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-green-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-popover">
+          <Check className="h-10 w-10 bg-popover" />
         </div>
 
-        <h2 className="mb-3 text-3xl font-semibold text-green-700">
+        <h2 className="mb-3 text-3xl font-semibold bg-popover">
           Inquiry Sent Successfully!
         </h2>
 
@@ -99,7 +90,7 @@ export const TravelInquiryForm = () => {
           Kyrgyzstan adventure.
         </p>
 
-        <div className="rounded-xl bg-green-50 p-4 text-sm text-green-700">
+        <div className="rounded-xl mb-6 p-4 text-sm bg-popover">
           ✓ Your message has been received.
         </div>
         <Button variant="outline" onClick={() => setIsSubmitted(false)}>
@@ -111,8 +102,22 @@ export const TravelInquiryForm = () => {
 
   return (
     <div>
+      <div className="mb-6">
+        <div className="my-3 flex items-center gap-2 text-primary">
+          <MountainSnow className="h-7 w-7" />
+          <h1 className="text-lg font-semibold">
+            Let’s plan your Kyrgyzstan adventure
+          </h1>
+        </div>
+
+        <p className="text-muted-foreground">
+          Share a few details about your trip and I’ll get back to you with
+          ideas, recommendations, and a possible itinerary.
+        </p>
+      </div>
+
       <form
-        className="w-full max-w-sm"
+        className="w-full space-y-6"
         onSubmit={async (event) => {
           setLoading(true);
           event.preventDefault();
@@ -226,7 +231,8 @@ export const TravelInquiryForm = () => {
             <Button type="submit" disabled={loading}>
               Send Inquiry
             </Button>
-            <FieldDescription>
+            <FieldDescription className="flex gap-0.5">
+              <LockKeyhole className="h-5 w-5" />
               Your information is safe with me.
             </FieldDescription>
           </Field>

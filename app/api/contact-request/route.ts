@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
     if (!emailRegex.test(body.email)) {
       return NextResponse.json(
-        { message: "Enter correct email" },
+        { message: "Please enter correct email" },
         { status: 400 },
       );
     }
@@ -30,7 +30,10 @@ export async function POST(request: Request) {
     const phoneRgx = /^\+?[0-9\s\-()]{7,15}$/;
 
     if (!phoneRgx.test(body.phone)) {
-      return NextResponse.json({ message: "Enter number" }, { status: 400 });
+      return NextResponse.json(
+        { message: "Please enter a valid phone number." },
+        { status: 400 },
+      );
     }
 
     await db.insert(contactRequests).values({
