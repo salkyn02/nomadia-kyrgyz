@@ -1,8 +1,80 @@
 {
   "navigation": {
-    "about": "About",
+    "about": "About Kyrgyzstan",
     "experiences": "Experiences",
     "destinations": "Destinations",
-    "contact": "Contact"
+    "contact": "Contact",
+    "planTrip": "Hit the road!"
+  },
+  "hero": {
+    "title": "Discover the Land of Nomads",
+    "subtitle": "Experience the untouched beauty, rich culture, and warm hospitality of Kyrgyzstan"
+  },
+  "about": {
+    "section_header": "A Land of Mountains, Traditions & Timeless Hospitality",
+    "section_body": "From snow-capped peaks to vast valleys, Kyrgyzstan is a land of breathtaking landscapes, nomadic heritage, and deep-rooted traditions. It offers a unique blend of untouched nature and authentic cultural experiences.",
+    "heritage_title": "Nomadic Heritage",
+    "heritage_desc": "Experience authentic nomadic way of life.",
+
+    "culture_title": "Rich Culture",
+    "culture_desc": "Warm hospitality, traditional cuisine and crafts.",
+
+    "canyon_title": "Skazka Canyon",
+    "canyon_desc": "Breathtaking mountains, lakes and endless horizons.",
+
+    "adventure_title": "Endless Adventures",
+    "adventure_desc": "Exploration opportunities across wild nature."
+  },
+  "experiences": {
+    "heading": "TOP EXPERIENCES",
+    "tags": {
+      "adventure": "Adventure",
+      "culture": "Culture",
+      "nature": "Nature"
+    },
+    "horseback": {
+      "title": "Horseback Adventure",
+      "desc": "Ride through breathtaking mountain landscapes"
+    },
+    "yurts": {
+      "title": "Yurts Stay",
+      "desc": "Experience authentic nomadic lifestyle"
+    },
+    "hiking": {
+      "title": "Hiking & Trekking",
+      "desc": "Explore alpine trails and valleys"
+    },
+    "eagle": {
+      "title": "Eagle Hunting",
+      "desc": "Discover ancient Kyrgyz traditions"
+    },
+    "camping": {
+      "title": "Lake Camping",
+      "desc": "Sleep under stars near Issyk-Kul"
+    }
+  },
+
+  "destinations": {
+    "heading": "TOP DESTINATIONS",
+    "tags": {
+      "nature": "Nature",
+      "culture": "Culture",
+      "nomadic_life": "Nomadic Life"
+    },
+    "items": {
+      "issyk_kul": { "name": "Issyk-Kul" },
+      "ala_archa": { "name": "Ala-Archa" },
+      "bishkek": { "name": "Bishkek City" },
+      "song_kul": { "name": "Song-Kul" },
+      "naryn": { "name": "Naryn" },
+      "too_jailoo": { "name": "Too Jailoo" }
+    }
+  },
+
+  "footer": {
+    "cta_headline": "Your journey to the heart of Kyrgyzstan begins here.",
+    "contact_us": "Contact Us",
+    "location": "Bishkek, Kyrgyzstan",
+    "copyright": "All rights reserved."
   }
 }

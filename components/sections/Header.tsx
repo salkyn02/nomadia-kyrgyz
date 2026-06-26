@@ -65,12 +65,14 @@ export const Header = () => {
           <div className="flex items-center gap-3">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Button className="cursor-pointer">Plan Your Trip</Button>
+                <Button className="cursor-pointer max-w-[120px] whitespace-normal text-center leading-tight py-4">
+                  {t("planTrip")}
+                </Button>
               </DialogTrigger>
 
               <DialogContent className="max-w-4xl">
                 <DialogHeader className="sr-only">
-                  <DialogTitle>Plan your trip</DialogTitle>
+                  <DialogTitle>{t("planTrip")}</DialogTitle>
                   <DialogDescription>
                     Send an inquiry with your travel details and interests.
                   </DialogDescription>

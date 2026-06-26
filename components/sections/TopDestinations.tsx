@@ -4,42 +4,44 @@ import Image from "next/image";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Container } from "../Container";
+import { useTranslations } from "next-intl";
 
 const destinations = [
   {
-    name: "Issyk-Kul Lake",
-    type: "Nature",
+    nameKey: "destinations.items.issyk_kul.name",
+    typeKey: "destinations.tags.nature",
     image: "/photo1.jpg",
   },
   {
-    name: "Ala-Archa",
-    type: "Nature",
+    nameKey: "destinations.items.ala_archa.name",
+    typeKey: "destinations.tags.nature",
     image: "/photo2.jpg",
   },
   {
-    name: "Bishkek City",
-    type: "Culture",
+    nameKey: "destinations.items.bishkek.name",
+    typeKey: "destinations.tags.culture",
     image: "/photo3.jpg",
   },
   {
-    name: "Song-Kul Lake",
-    type: "Nomadic Life",
+    nameKey: "destinations.items.song_kul.name",
+    typeKey: "destinations.tags.nomadic_life",
     image: "/photo4.jpg",
   },
   {
-    name: "Naryn",
-    type: "Nomadic Life",
+    nameKey: "destinations.items.naryn.name",
+    typeKey: "destinations.tags.nomadic_life",
     image: "/photo5.jpg",
   },
   {
-    name: "Too Jailoo",
-    type: "Nomadic Life",
+    nameKey: "destinations.items.too_jailoo.name",
+    typeKey: "destinations.tags.nomadic_life",
     image: "/photo6.jpg",
   },
 ];
 
 export const TopDestinations = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations();
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -58,7 +60,7 @@ export const TopDestinations = () => {
         {/* Header */}
         <div className="max-w-6xl w-full mx-auto flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-wide whitespace-nowrap">
-            TOP DESTINATIONS
+            {t("destinations.heading")}
           </h2>
 
           {/* Controls */}
@@ -99,7 +101,7 @@ export const TopDestinations = () => {
             >
               <Image
                 src={item.image}
-                alt={item.name}
+                alt={t(item.nameKey)}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover group-hover:scale-105 transition duration-500"
@@ -108,8 +110,8 @@ export const TopDestinations = () => {
               <div className="absolute inset-0 bg-black/30" />
 
               <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-lg font-semibold">{item.name}</h3>
-                <p className="text-sm opacity-90">{item.type}</p>
+                <h3 className="text-lg font-semibold">{t(item.nameKey)}</h3>
+                <p className="text-sm opacity-90">{t(item.typeKey)}</p>
               </div>
             </div>
           ))}

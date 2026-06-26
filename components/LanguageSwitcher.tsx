@@ -30,14 +30,14 @@ export const LanguageSwitcher = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className="cursor-pointer">
+      <DropdownMenuTrigger asChild className="cursor-pointer bg-primary text-white">
         <Button variant="outline">
           {locales.find((l) => l.code === currentLocale)?.label ?? "Language"}
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="bg-background min-w-[40px] p-1"
+        className="bg-primary min-w-[40px] p-1 text-white"
         align="center"
       >
         {locales.map((lang) => (

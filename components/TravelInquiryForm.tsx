@@ -76,11 +76,11 @@ export const TravelInquiryForm = () => {
   if (isSubmitted) {
     return (
       <div className="mx-auto max-w-xl rounded-3xl border bg-white p-10 text-center shadow-sm">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-popover">
-          <Check className="h-10 w-10 bg-popover" />
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ">
+          <Check className="h-10 w-10 " />
         </div>
 
-        <h2 className="mb-3 text-3xl font-semibold bg-popover">
+        <h2 className="mb-3 text-3xl font-semibold ">
           Inquiry Sent Successfully!
         </h2>
 
@@ -90,7 +90,7 @@ export const TravelInquiryForm = () => {
           Kyrgyzstan adventure.
         </p>
 
-        <div className="rounded-xl mb-6 p-4 text-sm bg-popover">
+        <div className="rounded-xl mb-6 p-4 text-sm">
           ✓ Your message has been received.
         </div>
         <Button variant="outline" onClick={() => setIsSubmitted(false)}>

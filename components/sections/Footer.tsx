@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { MountainSnow, MapPin, Mail, Phone } from "lucide-react";
 import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 export const Footer = () => {
+  const t = useTranslations("footer");
   return (
     <footer
       id="contact"
@@ -40,9 +42,7 @@ export const Footer = () => {
               </div>
             </Link>
 
-            <p className="text-white/80 max-w-sm">
-              Your journey to the heart of <br /> Kyrgyzstan begins here.
-            </p>
+            <p className="text-white/80 max-w-sm">{t("cta_headline")}</p>
 
             {/* Social Icons */}
             <div className="flex gap-4 mt-2">
@@ -62,12 +62,12 @@ export const Footer = () => {
 
           {/* RIGHT SIDE */}
           <div className="flex flex-col gap-5 md:w-1/2 md:items-end">
-            <h3 className="text-lg font-semibold">Contact Us</h3>
+            <h3 className="text-lg font-semibold">{t("contact_us")}</h3>
 
             <div className="flex flex-col gap-4 text-white/80 md:items-end">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                <span>Bishkek, Kyrgyzstan</span>
+                <span>{t("location")}</span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -85,7 +85,7 @@ export const Footer = () => {
 
         {/* COPYRIGHT */}
         <div className="border-t border-white/10 mt-12 pt-6 text-center text-sm text-white/70">
-          © 2026 NOMADIA Kyrgyz. All rights reserved.
+          © 2026 NOMADIA Kyrgyz. {t("copyright")}
         </div>
       </div>
     </footer>

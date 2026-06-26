@@ -4,42 +4,44 @@ import Image from "next/image";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Container } from "../Container";
+import { useTranslations } from "next-intl";
 
 const experiences = [
   {
-    title: "Horseback Adventure",
-    desc: "Ride through breathtaking mountain landscapes",
-    tag: "Adventure",
+    titleKey: "experiences.horseback.title",
+    descKey: "experiences.horseback.desc",
+    tagKey: "experiences.tags.adventure",
     image: "/photo1.jpg",
   },
   {
-    title: "Yurts Stay",
-    desc: "Experience authentic nomadic lifestyle",
-    tag: "Culture",
+    titleKey: "experiences.yurts.title",
+    descKey: "experiences.yurts.desc",
+    tagKey: "experiences.tags.culture",
     image: "/photo2.jpg",
   },
   {
-    title: "Hiking & Trekking",
-    desc: "Explore alpine trails and valleys",
-    tag: "Adventure",
+    titleKey: "experiences.hiking.title",
+    descKey: "experiences.hiking.desc",
+    tagKey: "experiences.tags.adventure",
     image: "/photo3.jpg",
   },
   {
-    title: "Eagle Hunting",
-    desc: "Discover ancient Kyrgyz traditions",
-    tag: "Culture",
+    titleKey: "experiences.eagle.title",
+    descKey: "experiences.eagle.desc",
+    tagKey: "experiences.tags.culture",
     image: "/photo4.jpg",
   },
   {
-    title: "Lake Camping",
-    desc: "Sleep under stars near Issyk-Kul",
-    tag: "Nature",
+    titleKey: "experiences.camping.title",
+    descKey: "experiences.camping.desc",
+    tagKey: "experiences.tags.nature",
     image: "/photo5.jpg",
   },
 ];
 
 export const Experiences = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations();
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -58,7 +60,7 @@ export const Experiences = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-wide whitespace-nowrap">
-            TOP EXPERIENCES
+            {t("experiences.heading")}
           </h2>
 
           <div className="flex gap-3">
@@ -100,7 +102,7 @@ export const Experiences = () => {
               <div className="relative w-full h-[200px]">
                 <Image
                   src={item.image}
-                  alt={item.title}
+                  alt={t(item.titleKey)}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
@@ -109,14 +111,16 @@ export const Experiences = () => {
 
               {/* Description Section */}
               <div className="p-4 bg-background flex flex-col gap-2">
-                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <h3 className="text-lg font-semibold">{t(item.titleKey)}</h3>
 
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
+                <p className="text-sm text-muted-foreground">
+                  {t(item.descKey)}
+                </p>
 
                 {/* Tag */}
                 <div className="mt-2 inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-primary/10 text-primary w-fit">
                   <span className="w-2 h-2 rounded-full bg-primary" />
-                  {item.tag}
+                  {t(item.tagKey)}
                 </div>
               </div>
             </div>

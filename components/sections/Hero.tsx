@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { Container } from "../Container";
+import { useTranslations } from "next-intl";
 
 export const Hero = () => {
+  const t = useTranslations("hero");
   return (
     <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
       {/* BACKGROUND */}
@@ -22,16 +24,12 @@ export const Hero = () => {
       {/* CONTENT */}
       <Container className="relative z-10 w-full">
         <div className="max-w-md md:max-w-xl text-white">
-          <h1 className="text-7xl sm:text-8xl md:text-9xl font-semibold leading-tight text-background">
-            Discover
-          </h1>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold leading-tight">
-            <span>the</span> <span>Land of Nomads</span>
+            {t("title")}
           </h1>
 
           <p className="mt-4 md:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-background">
-            Experience the untouched beauty, rich culture, and warm hospitality
-            of Kyrgyzstan
+            {t("subtitle")}
           </p>
         </div>
       </Container>
