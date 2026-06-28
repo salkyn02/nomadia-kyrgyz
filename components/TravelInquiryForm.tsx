@@ -227,14 +227,21 @@ export const TravelInquiryForm = () => {
               onChange={handleChange}
             />
           </Field>
-          <Field orientation="horizontal">
-            <Button type="submit" disabled={loading}>
-              Send Inquiry
-            </Button>
-            <FieldDescription className="flex gap-0.5">
-              <LockKeyhole className="h-5 w-5" />
-              Your information is safe with me.
-            </FieldDescription>
+          <Field>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Button
+                type="submit"
+                disabled={loading}
+                className="w-full sm:w-auto"
+              >
+                Send Inquiry
+              </Button>
+
+              <FieldDescription className="flex items-center gap-1">
+                <LockKeyhole className="h-5 w-5 shrink-0" />
+                Your information is safe with me.
+              </FieldDescription>
+            </div>
           </Field>
         </FieldGroup>
       </form>

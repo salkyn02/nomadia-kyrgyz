@@ -70,7 +70,7 @@ export const Header = () => {
                 </Button>
               </DialogTrigger>
 
-              <DialogContent className="max-w-4xl">
+              <DialogContent className="max-h-[90vh] overflow-y-auto">
                 <DialogHeader className="sr-only">
                   <DialogTitle>{t("planTrip")}</DialogTitle>
                   <DialogDescription>
