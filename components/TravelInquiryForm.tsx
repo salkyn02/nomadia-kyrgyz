@@ -23,6 +23,7 @@ import {
 } from "./ui/combobox";
 import { FormAction, FormState } from "@/type";
 import { Check, LockKeyhole, MountainSnow } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const initialFormState: FormState = {
   name: "",
@@ -47,9 +48,10 @@ function reducer(state: FormState, action: FormAction) {
   }
 }
 
-const placeOptions = ["Bishkek", "Naryn", "Issyk Kul"];
-
 export const TravelInquiryForm = () => {
+  const t = useTranslations("tripForm");
+  const placeOptions = t.raw("placeOptions") as string[];
+
   const [state, dispatch] = useReducer(reducer, initialFormState);
   const [loading, setLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -80,21 +82,15 @@ export const TravelInquiryForm = () => {
           <Check className="h-10 w-10 " />
         </div>
 
-        <h2 className="mb-3 text-3xl font-semibold ">
-          Inquiry Sent Successfully!
-        </h2>
+        <h2 className="mb-3 text-3xl font-semibold ">{t("successTitle")}</h2>
 
-        <p className="mb-6 text-muted-foreground">
-          Thank you for reaching out. I’ve received your inquiry and will get
-          back to you shortly with travel recommendations and ideas for your
-          Kyrgyzstan adventure.
-        </p>
+        <p className="mb-6 text-muted-foreground">{t("successDescription")}</p>
 
         <div className="rounded-xl mb-6 p-4 text-sm">
-          ✓ Your message has been received.
+          ✓ {t("successReceived")}
         </div>
         <Button variant="outline" onClick={() => setIsSubmitted(false)}>
-          Send Another Inquiry
+          {t("sendAnother")}
         </Button>
       </div>
     );
@@ -105,15 +101,10 @@ export const TravelInquiryForm = () => {
       <div className="mb-6">
         <div className="my-3 flex items-center gap-2 text-primary">
           <MountainSnow className="h-7 w-7" />
-          <h1 className="text-lg font-semibold">
-            Let’s plan your Kyrgyzstan adventure
-          </h1>
+          <h1 className="text-lg font-semibold">{t("title")}</h1>
         </div>
 
-        <p className="text-muted-foreground">
-          Share a few details about your trip and I’ll get back to you with
-          ideas, recommendations, and a possible itinerary.
-        </p>
+        <p className="text-muted-foreground">{t("description")}</p>
       </div>
 
       <form
@@ -145,18 +136,18 @@ export const TravelInquiryForm = () => {
         <FieldGroup>
           <div className="grid grid-cols-2 gap-4">
             <Field>
-              <FieldLabel htmlFor="name">Your Name</FieldLabel>
+              <FieldLabel htmlFor="name">{t("name")}</FieldLabel>
               <Input
                 id="name"
                 type="text"
-                placeholder="Enter your full name"
+                placeholder={t("fullName")}
                 required
                 value={state.name}
                 onChange={handleChange}
               />
             </Field>
             <Field>
-              <FieldLabel htmlFor="email">Email</FieldLabel>
+              <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
               <Input
                 id="email"
                 type="email"
@@ -167,19 +158,17 @@ export const TravelInquiryForm = () => {
             </Field>
           </div>
           <Field>
-            <FieldLabel htmlFor="phone">Phone / WhatsApp</FieldLabel>
+            <FieldLabel htmlFor="phone">{t("phone1")}</FieldLabel>
             <Input
               id="phone"
               type="tel"
-              placeholder="Enter your phone number"
+              placeholder={t("phone")}
               value={state.phone}
               onChange={handleChange}
             />
           </Field>
           <Field>
-            <FieldLabel htmlFor="places">
-              Places you are interested in
-            </FieldLabel>
+            <FieldLabel htmlFor="places">{t("interestedPlaces")}</FieldLabel>
             <Combobox
               items={placeOptions}
               multiple
@@ -197,14 +186,14 @@ export const TravelInquiryForm = () => {
                       ))}
                       <ComboboxChipsInput
                         id="places"
-                        placeholder="Select or type places"
+                        placeholder={t("places")}
                       />
                     </>
                   )}
                 </ComboboxValue>
               </ComboboxChips>
               <ComboboxContent>
-                <ComboboxEmpty>No items found.</ComboboxEmpty>
+                <ComboboxEmpty>{t("notFound")}</ComboboxEmpty>
                 <ComboboxList>
                   {(item) => (
                     <ComboboxItem key={item} value={item}>
@@ -214,14 +203,14 @@ export const TravelInquiryForm = () => {
                 </ComboboxList>
               </ComboboxContent>
             </Combobox>
-            <FieldDescription>You can choose multiple places</FieldDescription>
+            <FieldDescription>{t("placesDescription")}</FieldDescription>
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="message">Tell me about your trip</FieldLabel>
+            <FieldLabel htmlFor="message">{t("tellMe")}</FieldLabel>
             <Textarea
               id="message"
-              placeholder="What are you looking for? Any special requests?"
+              placeholder={t("message")}
               className="resize-none"
               value={state.message}
               onChange={handleChange}
@@ -234,12 +223,12 @@ export const TravelInquiryForm = () => {
                 disabled={loading}
                 className="w-full sm:w-auto"
               >
-                Send Inquiry
+                {t("submit")}
               </Button>
 
               <FieldDescription className="flex items-center gap-1">
                 <LockKeyhole className="h-5 w-5 shrink-0" />
-                Your information is safe with me.
+                {t("privacy")}
               </FieldDescription>
             </div>
           </Field>
