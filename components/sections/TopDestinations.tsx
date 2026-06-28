@@ -32,11 +32,6 @@ const destinations = [
     typeKey: "destinations.tags.nomadic_life",
     image: "/photo6.jpg",
   },
-  {
-    nameKey: "destinations.items.too_jailoo.name",
-    typeKey: "destinations.tags.nomadic_life",
-    image: "/photo6.jpg",
-  },
 ];
 
 export const TopDestinations = () => {
