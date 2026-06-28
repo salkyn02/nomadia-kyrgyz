@@ -59,7 +59,7 @@ export const Experiences = () => {
       <Container>
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide whitespace-nowrap">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide ">
             {t("experiences.heading")}
           </h2>
 

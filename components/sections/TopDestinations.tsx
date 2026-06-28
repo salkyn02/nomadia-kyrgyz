@@ -59,7 +59,7 @@ export const TopDestinations = () => {
       <Container className="w-full">
         {/* Header */}
         <div className="max-w-6xl w-full mx-auto flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide whitespace-nowrap">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-wide ">
             {t("destinations.heading")}
           </h2>
 

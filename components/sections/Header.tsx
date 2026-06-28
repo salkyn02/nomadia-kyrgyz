@@ -37,7 +37,7 @@ export const Header = () => {
 
         <div className="ml-auto flex items-center">
           {/* Nav */}
-          <nav className="hidden md:flex items-center gap-12 text-sm font-medium mr-10">
+          <nav className="hidden lg:flex items-center gap-12 text-sm font-medium mr-10">
             <Link className="hover:underline underline-offset-4" href="#about">
               {t("about")}
             </Link>
