@@ -18,6 +18,7 @@ import { LanguageSwitcher } from "../LanguageSwitcher";
 
 export const Header = () => {
   const t = useTranslations("navigation");
+
   return (
     <header className="w-full bg-background sticky top-0 z-50 ">
       <Container className="flex items-center py-1">
@@ -70,7 +71,7 @@ export const Header = () => {
                 </Button>
               </DialogTrigger>
 
-              <DialogContent className="max-h-[90vh] overflow-y-auto">
+              <DialogContent className=" max-h-[90vh] overflow-y-auto">
                 <DialogHeader className="sr-only">
                   <DialogTitle>{t("planTrip")}</DialogTitle>
                   <DialogDescription>

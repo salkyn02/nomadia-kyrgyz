@@ -25,12 +25,17 @@ export const LanguageSwitcher = () => {
   const switchLocale = (locale: string) => {
     const segments = pathname.split("/");
     segments[1] = locale;
-    router.push(segments.join("/"));
+    const newPath = segments.join("/");
+
+    router.replace(newPath, { scroll: false });
   };
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className="cursor-pointer bg-primary text-white">
+      <DropdownMenuTrigger
+        asChild
+        className="cursor-pointer bg-primary text-white"
+      >
         <Button variant="outline">
           {locales.find((l) => l.code === currentLocale)?.label ?? "Language"}
         </Button>

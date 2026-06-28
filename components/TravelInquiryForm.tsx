@@ -97,7 +97,7 @@ export const TravelInquiryForm = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <div className="mb-6">
         <div className="my-3 flex items-center gap-2 text-primary">
           <MountainSnow className="h-7 w-7" />
