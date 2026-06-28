@@ -10,22 +10,22 @@ const destinations = [
   {
     nameKey: "destinations.items.issyk_kul.name",
     typeKey: "destinations.tags.nature",
-    image: "/photo1.jpg",
+    image: "/issykkul.jpg",
   },
   {
     nameKey: "destinations.items.ala_archa.name",
     typeKey: "destinations.tags.nature",
-    image: "/photo2.jpg",
+    image: "/alaarcha.jpg",
   },
   {
     nameKey: "destinations.items.bishkek.name",
     typeKey: "destinations.tags.culture",
-    image: "/photo3.jpg",
+    image: "/bishkek.jpeg",
   },
   {
     nameKey: "destinations.items.song_kul.name",
     typeKey: "destinations.tags.nomadic_life",
-    image: "/photo4.jpg",
+    image: "/sonkul.jpg",
   },
   {
     nameKey: "destinations.items.naryn.name",

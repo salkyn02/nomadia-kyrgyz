@@ -11,31 +11,31 @@ const experiences = [
     titleKey: "experiences.horseback.title",
     descKey: "experiences.horseback.desc",
     tagKey: "experiences.tags.adventure",
-    image: "/photo1.jpg",
+    image: "/horseback.jpg",
   },
   {
     titleKey: "experiences.yurts.title",
     descKey: "experiences.yurts.desc",
     tagKey: "experiences.tags.culture",
-    image: "/photo2.jpg",
+    image: "/photo1.jpg",
   },
   {
     titleKey: "experiences.hiking.title",
     descKey: "experiences.hiking.desc",
     tagKey: "experiences.tags.adventure",
-    image: "/photo3.jpg",
+    image: "/hiking.jpg",
   },
   {
     titleKey: "experiences.eagle.title",
     descKey: "experiences.eagle.desc",
     tagKey: "experiences.tags.culture",
-    image: "/photo4.jpg",
+    image: "/eagle.jpeg",
   },
   {
     titleKey: "experiences.camping.title",
     descKey: "experiences.camping.desc",
     tagKey: "experiences.tags.nature",
-    image: "/photo5.jpg",
+    image: "/lakecamp.jpg",
   },
 ];
 
@@ -110,7 +110,7 @@ export const Experiences = () => {
               </div>
 
               {/* Description Section */}
-              <div className="p-4 bg-background flex flex-col gap-2">
+              <div className="p-4 flex flex-1 flex-col gap-2">
                 <h3 className="text-lg font-semibold">{t(item.titleKey)}</h3>
 
                 <p className="text-sm text-muted-foreground">
@@ -118,7 +118,7 @@ export const Experiences = () => {
                 </p>
 
                 {/* Tag */}
-                <div className="mt-2 inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-primary/10 text-primary w-fit">
+                <div className="mt-auto inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-primary/10 text-primary w-fit">
                   <span className="w-2 h-2 rounded-full bg-primary" />
                   {t(item.tagKey)}
                 </div>
