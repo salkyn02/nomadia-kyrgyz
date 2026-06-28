@@ -30,7 +30,7 @@ const destinations = [
   {
     nameKey: "destinations.items.naryn.name",
     typeKey: "destinations.tags.nomadic_life",
-    image: "/photo5.jpg",
+    image: "/photo6.jpg",
   },
   {
     nameKey: "destinations.items.too_jailoo.name",
