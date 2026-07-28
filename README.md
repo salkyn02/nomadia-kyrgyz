@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏔️ Nomadia Kyrgyz
 
-## Getting Started
+A modern travel website showcasing the beauty of Kyrgyzstan and making it easy for travellers to discover destinations and send travel enquiries. Built with Next.js, TypeScript, Tailwind CSS, PostgreSQL, and Drizzle ORM, the project focuses on responsive design, performance, and a clean user experience.
 
-First, run the development server:
+## 🌐 Live Demo
+
+Website: https://nomadia-kyrgyz.vercel.app/kg
+
+## ✨ Features
+
+* Explore popular destinations across Kyrgyzstan
+* Responsive design for desktop, tablet, and mobile devices
+* Multi-language support
+* Travel enquiry form
+* Server-side form validation
+* PostgreSQL database for storing enquiries
+* Modern and accessible UI built with shadcn/ui
+* Fast performance using Next.js App Router
+
+## 🛠 Tech Stack
+
+### Frontend
+
+* Next.js (App Router)
+* React
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
+* Lucide React
+
+### Backend
+
+* Next.js Route Handlers
+* PostgreSQL (Neon)
+* Drizzle ORM
+
+### Other Tools
+
+* next-intl (Internationalisation)
+* Git & GitHub
+
+## 🚀 Getting Started
+
+Clone the repository
+
+```bash
+git clone https://github.com/your-username/nomadia-kyrgyz.git
+```
+
+Navigate into the project
+
+```bash
+cd nomadia-kyrgyz
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Create a `.env.local` file and add your environment variables.
+
+```env
+DATABASE_URL=your_database_url
+```
+
+Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💡 What I Learned
 
-## Learn More
+During this project I gained hands-on experience with:
 
-To learn more about Next.js, take a look at the following resources:
+* Building full-stack applications using Next.js App Router
+* Creating reusable React components
+* Working with Server and Client Components
+* Designing responsive layouts with Tailwind CSS
+* Building and validating forms
+* Connecting a PostgreSQL database using Drizzle ORM
+* Implementing internationalisation with next-intl
+* Organising scalable project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔮 Future Improvements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Admin dashboard for managing enquiries
+* Email notifications after form submission
+* Interactive map integration
+* Destination filtering and search
+* Blog section with travel guides
+* Image optimisation and performance enhancements
 
-## Deploy on Vercel
+## 📬 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you have any questions or feedback, feel free to reach out or connect with me on LinkedIn.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Made with ❤️ using Next.js and TypeScript.
